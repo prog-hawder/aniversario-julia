@@ -125,6 +125,10 @@
 
 
   <section class="gallery">
+    <video controls width="90%" style="border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+      <source src="https://raw.githubusercontent.com/prog-hawder/aniversario-julia/main/video1.mp4" type="video/mp4">
+      Seu navegador não suporta vídeo.
+    </video>
     <img src="https://raw.githubusercontent.com/prog-hawder/aniversario-julia/refs/heads/main/Imagem%20do%20WhatsApp%20de%202025-10-04%20%C3%A0(s)%2015.42.09_20d09aef.jpg">
   </section>
 
@@ -145,49 +149,35 @@
   <div class="bubbles"></div>
 
   <!-- 🎵 MÚSICA -->
-  <audio id="bg-music" loop>
-    <source src="https://www.youtube.com/watch?v=GZjScYhw0rU" type="audio/mp3">
+  <audio id="bg-music" autoplay loop>
+    <source src="https://raw.githubusercontent.com/prog-hawder/aniversario-julia/main/Aliança - Tribalistas (lyric video).mp3" type="audio/mp3">
   </audio>
 
   <script>
-    // Simula bolhas subindo
-    const bubblesContainer = document.querySelector('.bubbles');
-    for (let i = 0; i < 15; i++) {
-      const bubble = document.createElement('div');
-      bubble.classList.add('bubble');
-      bubble.style.left = `${Math.random() * 100}%`;
-      bubble.style.width = bubble.style.height = `${Math.random() * 20 + 10}px`;
-      bubble.style.animationDuration = `${8 + Math.random() * 5}s`;
-      bubblesContainer.appendChild(bubble);
+  const music = document.getElementById('bg-music');
+  const muteBtn = document.getElementById('mute-btn');
+  let muted = false;
+
+  // Tenta iniciar a música no carregamento
+  document.addEventListener('DOMContentLoaded', () => {
+    music.play().catch(() => {
+      console.log('Autoplay bloqueado até interação.');
+    });
+  });
+
+  muteBtn.addEventListener('click', () => {
+    if (muted) {
+      music.muted = false;
+      muteBtn.textContent = '🔇';
+    } else {
+      music.muted = true;
+      muteBtn.textContent = '🔊';
     }
-
-    // Música com volume inicial baixo
-    const music = document.getElementById('bg-music');
-    const muteBtn = document.getElementById('mute-btn');
-    let muted = true;
-
-    // Definir volume inicial
-    music.volume = 1;
-
-    // Tenta iniciar a música no carregamento
-    document.addEventListener('DOMContentLoaded', () => {
-      music.play().catch(() => {
-        console.log('Autoplay bloqueado até interação.');
-      });
-    });
-
-    muteBtn.addEventListener('click', () => {
-      if (muted) {
-        music.volume = 1;
-        muteBtn.textContent = '🔊';
-      } else {
-        music.volume = 1;
-        muteBtn.textContent = '🔇';
-      }
-      muted = !muted;
-    });
-  </script>
+    muted = !muted;
+  });
+</script>
 </body>
 </html>
+
 
 
