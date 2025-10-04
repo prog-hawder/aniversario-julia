@@ -151,32 +151,9 @@
   <audio id="bg-music" autoplay loop>
     <source src="https://raw.githubusercontent.com/prog-hawder/aniversario-julia/main/alianca.mp3" type="audio/mp3">
   </audio>
-
-  <script>
-  const music = document.getElementById('bg-music');
-  const muteBtn = document.getElementById('mute-btn');
-  let muted = false;
-
-  // Tenta iniciar a música no carregamento
-  document.addEventListener('DOMContentLoaded', () => {
-    music.play().catch(() => {
-      console.log('Autoplay bloqueado até interação.');
-    });
-  });
-
-  muteBtn.addEventListener('click', () => {
-    if (muted) {
-      music.muted = false;
-      muteBtn.textContent = '🔇';
-    } else {
-      music.muted = true;
-      muteBtn.textContent = '🔊';
-    }
-    muted = !muted;
-  });
-</script>
 </body>
 </html>
+
 
 
 
